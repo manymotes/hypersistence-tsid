@@ -1,18 +1,18 @@
 /*
  * MIT License
- * 
+ *
  * Copyright (c) 2020-2022 Fabio Lima
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -62,7 +62,7 @@ import java.util.function.IntSupplier;
  * maximum TSIDs that can be generated per millisecond per node is 4096.
  * <p>
  * Instances of this class are <b>immutable</b>.
- * 
+ *
  * @see <a href="https://en.wikipedia.org/wiki/Snowflake_ID">Snowflake ID</a>
  */
 public final class TSID implements Serializable, Comparable<TSID> {
@@ -174,7 +174,7 @@ public final class TSID implements Serializable, Comparable<TSID> {
 	 * Creates a new TSID.
 	 * <p>
 	 * This constructor wraps the input value in an immutable object.
-	 * 
+	 *
 	 * @param number a number
 	 */
 	public TSID(final long number) {
@@ -185,7 +185,7 @@ public final class TSID implements Serializable, Comparable<TSID> {
 	 * Converts a number into a TSID.
 	 * <p>
 	 * This method wraps the input value in an immutable object.
-	 * 
+	 *
 	 * @param number a number
 	 * @return a TSID
 	 */
@@ -195,7 +195,7 @@ public final class TSID implements Serializable, Comparable<TSID> {
 
 	/**
 	 * Converts a byte array into a TSID.
-	 * 
+	 *
 	 * @param bytes a byte array
 	 * @return a TSID
 	 * @throws IllegalArgumentException if bytes are null or its length is not 8
@@ -227,7 +227,7 @@ public final class TSID implements Serializable, Comparable<TSID> {
 	 * from Crockford's base 32 alphabet.
 	 * <p>
 	 * The first character of the input string must be between 0 and F.
-	 * 
+	 *
 	 * @param string a canonical string
 	 * @return a TSID
 	 * @throws IllegalArgumentException if the input string is invalid
@@ -260,7 +260,7 @@ public final class TSID implements Serializable, Comparable<TSID> {
 	 * Converts the TSID into a number.
 	 * <p>
 	 * This method simply unwraps the internal value.
-	 * 
+	 *
 	 * @return an number.
 	 */
 	public long toLong() {
@@ -269,7 +269,7 @@ public final class TSID implements Serializable, Comparable<TSID> {
 
 	/**
 	 * Converts the TSID into a byte array.
-	 * 
+	 *
 	 * @return an byte array.
 	 */
 	public byte[] toBytes() {
@@ -304,7 +304,7 @@ public final class TSID implements Serializable, Comparable<TSID> {
 	 * collisions if more than one process is generating TSIDs using this method. In
 	 * that case, {@link Factory#getTsid()} <b>should</b> be used in conjunction
 	 * with that property or variable.
-	 * 
+	 *
 	 * @return a TSID
 	 * @see {@link AtomicInteger}
 	 * @since 5.1.0
@@ -323,7 +323,7 @@ public final class TSID implements Serializable, Comparable<TSID> {
 	 * <p>
 	 * For lower case string, use the shorthand {@code Tsid.toLowerCase()} instead
 	 * of {@code Tsid.toString().toLowerCase()}.
-	 * 
+	 *
 	 * @return a TSID string
 	 * @see <a href="https://www.crockford.com/base32.html">Crockford's Base 32</a>
 	 */
@@ -339,7 +339,7 @@ public final class TSID implements Serializable, Comparable<TSID> {
 	 * Crockford's base 32 alphabet.
 	 * <p>
 	 * It is faster shorthand for {@code Tsid.toString().toLowerCase()}.
-	 * 
+	 *
 	 * @return a string
 	 * @see <a href="https://www.crockford.com/base32.html">Crockford's Base 32</a>
 	 */
@@ -351,7 +351,7 @@ public final class TSID implements Serializable, Comparable<TSID> {
 	 * Returns the instant of creation.
 	 * <p>
 	 * The instant of creation is extracted from the time component.
-	 * 
+	 *
 	 * @return {@link Instant}
 	 */
 	public Instant getInstant() {
@@ -362,7 +362,7 @@ public final class TSID implements Serializable, Comparable<TSID> {
 	 * Returns the instant of creation.
 	 * <p>
 	 * The instant of creation is extracted from the time component.
-	 * 
+	 *
 	 * @param customEpoch the custom epoch instant
 	 * @return {@link Instant}
 	 */
@@ -374,7 +374,7 @@ public final class TSID implements Serializable, Comparable<TSID> {
 	 * Returns the time of creation in milliseconds since 1970-01-01.
 	 * <p>
 	 * The time of creation is extracted from the time component.
-	 * 
+	 *
 	 * @return the number of milliseconds since 1970-01-01
 	 */
 	public long getUnixMilliseconds() {
@@ -385,7 +385,7 @@ public final class TSID implements Serializable, Comparable<TSID> {
 	 * Returns the time of creation in milliseconds since 1970-01-01.
 	 * <p>
 	 * The time of creation is extracted from the time component.
-	 * 
+	 *
 	 * @param customEpoch the custom epoch in milliseconds since 1970-01-01
 	 * @return the number of milliseconds since 1970-01-01
 	 */
@@ -397,7 +397,7 @@ public final class TSID implements Serializable, Comparable<TSID> {
 	 * Returns the time component as a number.
 	 * <p>
 	 * The time component is a number between 0 and 2^42-1.
-	 * 
+	 *
 	 * @return a number of milliseconds.
 	 */
 	long getTime() {
@@ -408,7 +408,7 @@ public final class TSID implements Serializable, Comparable<TSID> {
 	 * Returns the random component as a number.
 	 * <p>
 	 * The time component is a number between 0 and 2^22-1.
-	 * 
+	 *
 	 * @return a number
 	 */
 	long getRandom() {
@@ -422,7 +422,7 @@ public final class TSID implements Serializable, Comparable<TSID> {
 	 * from Crockford's base 32 alphabet.
 	 * <p>
 	 * The first character of the input string must be between 0 and F.
-	 * 
+	 *
 	 * @param string a string
 	 * @return true if valid
 	 */
@@ -456,7 +456,7 @@ public final class TSID implements Serializable, Comparable<TSID> {
 	 * <p>
 	 * The first of two TSIDs is greater than the second if the most significant
 	 * byte in which they differ is greater for the first TSID.
-	 * 
+	 *
 	 * @param that a TSID to be compared with
 	 * @return -1, 0 or 1 as {@code this} is less than, equal to, or greater than
 	 *         {@code that}
@@ -489,7 +489,7 @@ public final class TSID implements Serializable, Comparable<TSID> {
 	 * </ul>
 	 * <p>
 	 * The output string is left padded with zeros.
-	 * 
+	 *
 	 * @param base a radix between 2 and 62
 	 * @return a base-n encoded string
 	 * @since 5.2.0
@@ -512,7 +512,7 @@ public final class TSID implements Serializable, Comparable<TSID> {
 	 * </ul>
 	 * <p>
 	 * The input string is left padded with zeros.
-	 * 
+	 *
 	 * @param string a base-n encoded string
 	 * @param base   a radix between 2 and 62
 	 * @return a TSID
@@ -560,7 +560,7 @@ public final class TSID implements Serializable, Comparable<TSID> {
 	 * </ul>
 	 * <p>
 	 * The opposite operation can be done by {@link TSID#unformat(String, String)}.
-	 * 
+	 *
 	 * @param format a custom format
 	 * @return a string using a custom format
 	 * @since 5.2.0
@@ -616,7 +616,7 @@ public final class TSID implements Serializable, Comparable<TSID> {
 	 * </ul>
 	 * </li>
 	 * </ul>
-	 * 
+	 *
 	 * @param formatted a string using a custom format
 	 * @param format    a custom format
 	 * @return a TSID
@@ -685,12 +685,12 @@ public final class TSID implements Serializable, Comparable<TSID> {
 
 	/**
 	 * Checks if the string is a valid TSID.
-	 * 
+	 *
 	 * A valid TSID string is a sequence of 13 characters from Crockford's base 32
 	 * alphabet.
-	 * 
+	 *
 	 * The first character of the input string must be between 0 and F.
-	 * 
+	 *
 	 * @param chars a char array
 	 * @return boolean true if valid
 	 */
@@ -804,7 +804,7 @@ public final class TSID implements Serializable, Comparable<TSID> {
 
 		public static final IntSupplier THREAD_LOCAL_RANDOM_FUNCTION = () -> ThreadLocalRandom.current().nextInt();
 
-		private int counter;
+		private AtomicInteger counter;
 		private long lastTime;
 
 		private final int node;
@@ -889,7 +889,7 @@ public final class TSID implements Serializable, Comparable<TSID> {
 			this.lastTime = clock.millis();
 			try {
 				LOCK.lock();
-				this.counter = getRandomValue();
+				this.counter = new AtomicInteger(getRandomValue());
 			} finally {
 				LOCK.unlock();
 			}
@@ -971,7 +971,7 @@ public final class TSID implements Serializable, Comparable<TSID> {
 			try {
 				LOCK.lock();
 				_time = getTime() << RANDOM_BITS;
-				_counter = (long) this.counter & this.counterMask;
+				_counter = (long) this.counter.getAndIncrement() & this.counterMask; // Thread-safe increment;
 			} finally {
 				LOCK.unlock();
 			}
@@ -992,25 +992,23 @@ public final class TSID implements Serializable, Comparable<TSID> {
 		 * @return the current time
 		 */
 		private long getTime() {
-			long time = clock.millis();
+            long time = this.clock.millis();
+            if (time <= this.lastTime) {
+                // Carry is 1 if an overflow occurs after ++.
+                int carry = this.counter.getAndIncrement() >>> this.counterBits;
+                this.counter.set(this.counter.get() & this.counterMask);
+                time = this.lastTime + carry;
+            } else {
+                // If the system clock has advanced as expected,
+                // simply reset the counter to a new random value.
+                this.counter.set(getRandomValue());
+            }
 
-			if (time <= this.lastTime) {
-				this.counter++;
-				// Carry is 1 if an overflow occurs after ++.
-				int carry = this.counter >>> this.counterBits;
-				this.counter = this.counter & this.counterMask;
-				time = this.lastTime + carry; // increment time
-			} else {
-				// If the system clock has advanced as expected,
-				// simply reset the counter to a new random value.
-				this.counter = this.getRandomValue();
-			}
+            // save current time
+            this.lastTime = time;
 
-			// save current time
-			this.lastTime = time;
-
-			// adjust to the custom epoch
-			return time - this.customEpoch;
+            // adjust to the custom epoch
+            return time - this.customEpoch;
 		}
 
 		/**
@@ -1045,10 +1043,10 @@ public final class TSID implements Serializable, Comparable<TSID> {
 		 * @return a number
 		 */
 		private int getRandomValue() {
-			int randomCounter = getRandomCounter();
-			int threadId = (((int) (Thread.currentThread().getId()) % 256) << (counterBits - 8));
+            int randomCounter = getRandomCounter();
+            int threadId = (((int) (Thread.currentThread().getId()) % 256) << (counterBits - 8));
 
-			return (threadId | (randomCounter >> (counterBits - 8)));
+            return (threadId | (randomCounter >> (counterBits - 8)));
 		}
 
 		/**
